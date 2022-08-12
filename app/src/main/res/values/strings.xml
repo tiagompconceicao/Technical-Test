@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Technical Test</string>
+    <string name="load_contacts">Load contacts</string>
+    <string name="generate_new_url">Generate new URL</string>
+    <string name="example_com">example.com</string>
+    <string name="gonna_send_contacts_to">Gonna send contacts to: </string>
+    <string name="send_contacts">Send Contacts</string>
+    <string name="service_name">NotificationListenerService</string>
+</resources>
