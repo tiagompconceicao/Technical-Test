@@ -3,7 +3,11 @@
     <string name="load_contacts">Load contacts</string>
     <string name="generate_new_url">Generate new URL</string>
     <string name="example_com">example.com</string>
-    <string name="gonna_send_contacts_to">Gonna send contacts to: </string>
+    <string name="gonna_send_contacts_to">Gonna send info to: </string>
     <string name="send_contacts">Send Contacts</string>
     <string name="service_name">NotificationListenerService</string>
+    <string name="send_package_name">Send package name</string>
+    <string name="send_notifications">send notifications</string>
+    <string name="contacts">Contacts</string>
+    <string name="notifications">Notifications</string>
 </resources>

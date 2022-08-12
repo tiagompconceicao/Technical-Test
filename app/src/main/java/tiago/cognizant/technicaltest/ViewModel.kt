@@ -38,9 +38,9 @@ class MyViewModel(app: Application) : AndroidViewModel(app) {
         })
     }
 
-    fun sendContacts(mContext: Context){
+    fun sendContacts(mContext: Context,url:String){
         Log.d("Contacts","View Model: send Contacts")
-        repository.sendRequest(mContext,url.getURL(), contacts.value!!,"contacts")
+        repository.sendRequest(mContext,url, contacts.value!!,"contacts")
     }
 
     //Add-on #3
