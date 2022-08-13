@@ -7,15 +7,29 @@ import android.service.notification.NotificationListenerService
 import android.service.notification.StatusBarNotification
 import android.util.Log
 
+
+//Add-on #1
+//Notification listener
 class NotificationListener : NotificationListenerService() {
 
-    override fun onBind(intent: Intent): IBinder? {
-        return super.onBind(intent)
+    var context: Context? = null
+
+    override fun onCreate() {
+        super.onCreate()
+        context = applicationContext
+    }
+
+        override fun onListenerConnected() {
+        super.onListenerConnected()
+        Log.d("Notifications","Listener connected")
     }
 
     override fun onNotificationPosted(sbn: StatusBarNotification) {
         // Implement what you want here
         Log.d("Notifications","Notification received")
+        val intent = Intent("tiago.cognizant.technicaltest.notificationlistener")
+        intent.putExtra("Notification", sbn)
+        sendBroadcast(intent)
     }
 
     override fun onNotificationRemoved(sbn: StatusBarNotification) {

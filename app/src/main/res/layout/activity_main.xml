@@ -51,15 +51,18 @@
                 android:id="@+id/genURLButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:text="@string/generate_new_url" />
+                android:layout_marginStart="10dp"
+                android:text="@string/generate_new_url"
+                android:layout_weight="1"/>
 
             <Button
                 android:id="@+id/sendNotifications"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
-                android:text="@string/send_notifications" />
+                android:text="@string/send_notifications"
+                android:layout_weight="0.5"
+                android:layout_marginEnd="5dp"/>
 
         </LinearLayout>
         <LinearLayout
@@ -70,15 +73,18 @@
                 android:id="@+id/sendPackageName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:text="@string/send_package_name" />
+                android:layout_marginStart="10dp"
+                android:text="@string/send_package_name"
+                android:layout_weight="0"/>
 
             <Button
                 android:id="@+id/sendContacts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:text="@string/send_contacts" />
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:text="@string/send_contacts"
+                android:layout_weight="1"/>
 
 
         </LinearLayout>
@@ -135,7 +141,8 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_view_not"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/notifications_list_item"/>
             </LinearLayout>
         </LinearLayout>
 

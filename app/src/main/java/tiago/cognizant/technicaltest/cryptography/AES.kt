@@ -12,6 +12,9 @@ import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
 import javax.crypto.spec.IvParameterSpec
 
+//Add-on #2
+//Encryption and decryption methods using AES algorithm
+
 fun encrypt(context: Context, strToEncrypt: String): ByteArray {
     val plainText = strToEncrypt.toByteArray(Charsets.UTF_8)
     val keygen = KeyGenerator.getInstance("AES")

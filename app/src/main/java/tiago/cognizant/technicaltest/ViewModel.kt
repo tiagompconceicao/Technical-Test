@@ -2,6 +2,7 @@ package tiago.cognizant.technicaltest
 
 import android.app.Application
 import android.content.Context
+import android.service.notification.StatusBarNotification
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
@@ -17,6 +18,8 @@ import kotlin.reflect.full.functions
 class MyViewModel(app: Application) : AndroidViewModel(app) {
 
     val contacts: LiveData<List<Contact>> = MutableLiveData()
+
+    val notifications: LiveData<List<StatusBarNotification>> = MutableLiveData()
 
     private val repository by lazy {
         Repository()
@@ -68,8 +71,19 @@ class MyViewModel(app: Application) : AndroidViewModel(app) {
 
     //Add-on #3 (cont.)
     //Send the encoded name to a given URL
-    fun sendPackageName(mContext: Context){
+    fun sendPackageName(mContext: Context, url: String){
         val encoded = encodePackageName(mContext)
-        repository.sendRequest(mContext,url.getURL(),encoded,"packageName")
+        repository.sendRequest(mContext,url,encoded,"packageName")
+    }
+
+    fun addNotification(receivedNotification: StatusBarNotification) {
+        if (notifications.value == null){
+            (notifications as MutableLiveData<List<StatusBarNotification>>).value = listOf(receivedNotification)
+        } else {
+            val list: MutableList<StatusBarNotification> = notifications.value as MutableList<StatusBarNotification>
+            list.add(receivedNotification)
+            (notifications as MutableLiveData<List<StatusBarNotification>>).value = list
+        }
+
     }
 }
