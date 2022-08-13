@@ -7,13 +7,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import tiago.cognizant.technicaltest.R
+import tiago.cognizant.technicaltest.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat
 
 class NotificationListAdapter(notificationList: List<StatusBarNotification>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val notificationList = notificationList
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.contacts_list_item, parent, false)
+        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.notifications_list_item, parent, false)
         return NotificationHolder(view)
     }
 
@@ -26,10 +27,10 @@ class NotificationListAdapter(notificationList: List<StatusBarNotification>): Re
         return notificationList.size
     }
 
-    private inner class NotificationHolder constructor(itemView: View) :
+    private inner class NotificationHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
-        var title: TextView = itemView.findViewById(R.id.notification_title)
-        var timestamp: TextView = itemView.findViewById(R.id.timestamp)
+        var title: TextView = itemView.findViewById(R.id.not_title)
+        var timestamp: TextView = itemView.findViewById(R.id.not_timestamp)
         val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy hh:mm")
 
         fun bind(notification: StatusBarNotification) {

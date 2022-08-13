@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/notification_title"
+            android:id="@+id/not_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="tiago.cognizant.technicaltest">
@@ -21,7 +21,7 @@
         </TextView>
 
         <TextView
-            android:id="@+id/timestamp"
+            android:id="@+id/not_timestamp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="13/08/2022 12:00">

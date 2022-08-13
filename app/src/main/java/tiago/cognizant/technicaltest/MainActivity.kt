@@ -30,12 +30,10 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var broadcastReceiver: BroadcastNotificationReceiver
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         //startActivity(Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"))
-
         binding.url.setText(viewModel.generateURL())
 
         val mContactRecycler = instantiateRecyclerView(binding.recyclerView)
@@ -46,7 +44,6 @@ class MainActivity : AppCompatActivity() {
             val mNotificationAdapter = NotificationListAdapter(it)
             mNotificationRecycler.adapter = mNotificationAdapter
         }
-
         viewModel.contacts.observe(this) {
             val mContactAdapter = ContactListAdapter(it)
             mContactRecycler.adapter = mContactAdapter
@@ -67,20 +64,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.sendNotifications.setOnClickListener{
-            createNotificationChannel()
-
-            val builder = NotificationCompat.Builder(this, "0")
-                .setSmallIcon(R.drawable.ic_launcher_foreground)
-                .setContentTitle("My notification")
-                .setContentText("Much longer text that cannot fit one line...")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-
-            with(NotificationManagerCompat.from(this)) {
-                // notificationId is a unique int for each notification that you must define
-                notify(notificationID, builder.build())
-            }
-
-            notificationID++
+            Log.d("notifications","Activity: send notifications")
+            viewModel.sendNotifications(this,binding.url.text.toString())
         }
 
         // Finally we register a receiver to tell the MainActivity when a notification has been received
