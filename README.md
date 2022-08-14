@@ -1,6 +1,6 @@
 
 # Overview
-**Main objective**:  Using the language of your choice, either Java or Kotlin, develop an android application that queries the device contacts provider, saves them into a list and uploads the list to a fictitious URL of your choice. ✔️
+**Main objective**:  Using the language of your choice, either Java or Kotlin, develop an android application that queries the device contacts provider, saves them into a list and uploads the list to a fictitious URL of your choice. ✔️ 
 
 **Optional add-on #1**: Upload the content of all notifications received to the same fictitious URL of your choice. ✔️
 
@@ -8,9 +8,10 @@
 
 **Optional add-on #3**: Implement your own custom method using reflection which encodes the application package name with base64. Upload the encoded string to the same fictitious URL of your choice. ✔️
 
-# Funcionalities Overview
-Explicar como a aplicação esta organizada visualmente,
-Explicar cada componente visual
+
+
+# <a name="foverview"></a> Funcionalities Overview
+The image below shows the graphical functionalities of the application, followed by a description of each one:
 
 <img src="https://github.com/tiagompconceicao/Technical-Test/blob/main/FuncionalityOverview.jpg?raw=true" width="200" height="400">
 
@@ -24,6 +25,37 @@ Explicar cada componente visual
 
 # Architectural Overview
 
-Explicar como a aplicação está organizada.
-Explicar a interação entre os componentes.
+This application follow a MVVM design pattern (Model-View-ViewModel), and has the next architecture:
+
+- Activity
+- ViewModel
+- NotificationListener
+- View
+- Model
+- Repository
+- Cryptography
+
+### Activity
+Was implemented only 1 activity in this application, which was presented in the [Functionalities Overview](#foverview) section
+
+
+
+### ViewModel
+Was implemented 1 ViewModel class to stored the contacts and notification (using LiveData fields), also perform the business logic, as call the Repository methods to send these fields remotely. 
+
+### NotificationListener
+Class to instanciate a service to listen notifications.
+When a notification is catched, it is sent to the MainActivity by a broadcast receiver, then is stored in the respective field of the viewModel instance.
+
+### View
+Package that have 2 classes, 
+
+### Model
+Contains the necessary data classes.
+
+### Repository
+Class that performs external contact aside the application, as load the contacts from the device, or send some info to a URL.
+
+### Cryptography
+Contains the functions to encrypt and decrypt using the AES algorithm.
 
