@@ -12,7 +12,8 @@
 Explicar como a aplicação esta organizada visualmente,
 Explicar cada componente visual
 
-![alt text](https://github.com/tiagompconceicao/Technical-Test/blob/main/FuncionalityOverview.jpg?raw=true)
+<img src="https://github.com/tiagompconceicao/Technical-Test/blob/main/FuncionalityOverview.jpg?raw=true" width="200" height="100">
+![alt text]()
 - 1: EditText that contains the ficticious URL
 
 # Architectural Overview
