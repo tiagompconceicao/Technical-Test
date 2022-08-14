@@ -9,7 +9,7 @@
 
 
 
-#Funcionalities Overview
+# Funcionalities Overview
 The image below shows the graphical functionalities of the application, followed by a description of each one:
 
 <img src="https://github.com/tiagompconceicao/Technical-Test/blob/main/FuncionalityOverview.jpg?raw=true" width="200" height="400">
