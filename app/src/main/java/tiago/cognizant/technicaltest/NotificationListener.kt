@@ -8,8 +8,10 @@ import android.service.notification.StatusBarNotification
 import android.util.Log
 
 
-//Add-on #1
-//Notification listener
+/**
+ * Add-on #1
+ * Notification listener service
+ */
 class NotificationListener : NotificationListenerService() {
 
     var context: Context? = null

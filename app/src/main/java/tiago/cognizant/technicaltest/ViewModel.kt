@@ -38,7 +38,10 @@ class MyViewModel(app: Application) : AndroidViewModel(app) {
         })
     }
 
-    //Send all contacts stored to given URL
+
+    /**
+     * Send all contacts stored to given URL
+     */
     fun sendContacts(mContext: Context,url:String){
         if (contacts.value == null){
             Toast.makeText(mContext,"Contacts not available yet",Toast.LENGTH_SHORT).show()
@@ -50,8 +53,11 @@ class MyViewModel(app: Application) : AndroidViewModel(app) {
 
     }
 
-    //Add-on #1
-    //Send all notifications stored to given URL
+
+    /**
+     * Add-on #1
+     * Send all notifications stored to given URL
+     */
     fun sendNotifications(mContext: Context, url: String){
         if (notifications.value == null){
             Toast.makeText(mContext,"Notifications not available yet",Toast.LENGTH_SHORT).show()
@@ -63,6 +69,10 @@ class MyViewModel(app: Application) : AndroidViewModel(app) {
 
     }
 
+    /**
+     * Add-on #1
+     * Save a received notification to the respective list
+     */
     fun addNotification(receivedNotification: StatusBarNotification) {
         if (notifications.value == null){
             (notifications as MutableLiveData<List<StatusBarNotification>>).value = listOf(receivedNotification)
@@ -74,10 +84,10 @@ class MyViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
-
-
-    //Add-on #3
-    //Method that gets the application package name and encodes it to base64 using reflection
+    /**
+     * Add-on #3
+     * Method that gets the application package name and encodes it to base64 using reflection
+     */
     private fun encodePackageName(mContext: Context): String{
 
         //Get application package name
@@ -99,8 +109,10 @@ class MyViewModel(app: Application) : AndroidViewModel(app) {
         return encoded
     }
 
-    //Add-on #3 (cont.)
-    //Send the encoded name to a given URL
+    /**
+     * Add-on #3
+     * Send the encoded name to a given URL
+     */
     fun sendPackageName(mContext: Context, url: String){
         val encoded = encodePackageName(mContext)
         repository.sendRequest(mContext,url,encoded,"packageName")

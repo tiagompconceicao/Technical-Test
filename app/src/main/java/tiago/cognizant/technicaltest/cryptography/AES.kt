@@ -2,7 +2,6 @@ package tiago.cognizant.technicaltest.cryptography
 
 import android.content.Context
 import androidx.preference.PreferenceManager
-import android.widget.Toast
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.ObjectInputStream
@@ -30,7 +29,6 @@ fun encrypt(context: Context, strToEncrypt: String): ByteArray {
     for (b in cipherText) {
         sb.append(b)
     }
-    Toast.makeText(context, "dbg encrypted = [" + sb.toString() + "]", Toast.LENGTH_LONG).show()
 
     return cipherText
 }
@@ -43,9 +41,8 @@ fun decrypt(context:Context, dataToDecrypt: ByteArray): ByteArray {
 
     val sb = StringBuilder()
     for (b in cipherText) {
-        sb.append(b.toChar())
+        sb.append(b)
     }
-    Toast.makeText(context, "dbg decrypted = [" + sb.toString() + "]", Toast.LENGTH_LONG).show()
 
     return cipherText
 }

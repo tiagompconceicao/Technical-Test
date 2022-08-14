@@ -13,8 +13,6 @@ import android.service.notification.StatusBarNotification
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import tiago.cognizant.technicaltest.databinding.ActivityMainBinding
@@ -26,14 +24,11 @@ class MainActivity : AppCompatActivity() {
 
     private val binding: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     private val viewModel: MyViewModel by viewModels()
-    private var notificationID = 0
-
     private lateinit var broadcastReceiver: BroadcastNotificationReceiver
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        //startActivity(Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"))
         binding.url.setText(viewModel.generateURL())
 
         val mContactRecycler = instantiateRecyclerView(binding.recyclerView)
@@ -65,21 +60,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.sendNotifications.setOnClickListener{
             Log.d("notifications","Activity: send notifications")
-            //viewModel.sendNotifications(this,binding.url.text.toString())
-            createNotificationChannel()
-
-            val builder = NotificationCompat.Builder(this, "0")
-                .setSmallIcon(R.drawable.ic_launcher_foreground)
-                .setContentTitle("My notification")
-                .setContentText("Much longer text that cannot fit one line...")
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-
-            with(NotificationManagerCompat.from(this)) {
-                // notificationId is a unique int for each notification that you must define
-                notify(notificationID, builder.build())
-            }
-
-            notificationID++
+            viewModel.sendNotifications(this,binding.url.text.toString())
         }
 
         // Finally we register a receiver to tell the MainActivity when a notification has been received
@@ -88,29 +69,16 @@ class MainActivity : AppCompatActivity() {
         intentFilter.addAction("tiago.cognizant.technicaltest.notificationlistener")
         registerReceiver(broadcastReceiver, intentFilter)
 
-
-        //startService(Intent(this, NotificationListener::class.java))
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        //unregisterReceiver(broadcastReceiver)
+        unregisterReceiver(broadcastReceiver)
     }
 
-    private fun createNotificationChannel() {
-        // Create the NotificationChannel, but only on API 26+ because
-        // the NotificationChannel class is new and not in the support library
-        val name = "channel_name"
-        val importance = NotificationManager.IMPORTANCE_DEFAULT
-        val channel = NotificationChannel("0", name, importance).apply {
-        }
-        // Register the channel with the system
-        val notificationManager: NotificationManager =
-            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        notificationManager.createNotificationChannel(channel)
-    }
-
-    //Check if app has READ_CONTACTS permission, if not have yet, will request it otherwise will load the contacts
+    /**
+     * Check if app has READ_CONTACTS permission, if not have yet, will request it otherwise will load the contacts
+     */
     private fun loadContacts() {
         if (checkSelfPermission(Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
                 //Request read contacts permission
@@ -122,11 +90,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    //Redefinition of the callback to try load the contacts again if the permission was granted
+    /**
+     * Redefinition of the callback to try load the contacts again if the permission was granted
+     */
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        Log.d("Permissions","Permissions result: ${grantResults[0]}, for request: ${requestCode}")
+        Log.d("Permissions","Permissions result: ${grantResults[0]}, for request: $requestCode")
 
         if (requestCode == 0) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -139,10 +109,8 @@ class MainActivity : AppCompatActivity() {
 
 
     /**
-     * Image Change Broadcast Receiver.
-     * We use this Broadcast Receiver to notify the Main Activity when
-     * a new notification has arrived, so it can properly change the
-     * notification image
+     * Broadcast Receiver.
+     * Used to notify the Main Activity when a new notification has arrived
      */
     class BroadcastNotificationReceiver(private val viewModel: MyViewModel) : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
@@ -153,11 +121,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /**
+     * Function used to instantiate generically a recyclerView
+     */
     private fun instantiateRecyclerView(recyclerView: RecyclerView): RecyclerView {
         val mLayoutManager = LinearLayoutManager(this)
         mLayoutManager.reverseLayout = false
-        val mRecycler = recyclerView
-        mRecycler.layoutManager = mLayoutManager
-        return mRecycler
+        recyclerView.layoutManager = mLayoutManager
+        return recyclerView
     }
 }
