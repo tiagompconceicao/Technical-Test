@@ -65,7 +65,21 @@ class MainActivity : AppCompatActivity() {
 
         binding.sendNotifications.setOnClickListener{
             Log.d("notifications","Activity: send notifications")
-            viewModel.sendNotifications(this,binding.url.text.toString())
+            //viewModel.sendNotifications(this,binding.url.text.toString())
+            createNotificationChannel()
+
+            val builder = NotificationCompat.Builder(this, "0")
+                .setSmallIcon(R.drawable.ic_launcher_foreground)
+                .setContentTitle("My notification")
+                .setContentText("Much longer text that cannot fit one line...")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+            with(NotificationManagerCompat.from(this)) {
+                // notificationId is a unique int for each notification that you must define
+                notify(notificationID, builder.build())
+            }
+
+            notificationID++
         }
 
         // Finally we register a receiver to tell the MainActivity when a notification has been received
