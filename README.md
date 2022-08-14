@@ -13,8 +13,14 @@ Explicar como a aplicação esta organizada visualmente,
 Explicar cada componente visual
 
 <img src="https://github.com/tiagompconceicao/Technical-Test/blob/main/FuncionalityOverview.jpg?raw=true" width="200" height="400">
-![alt text]()
-- 1: EditText that contains the ficticious URL
+
+- 1: EditText that contains the URL
+- 2: Button to send all notifications catched to the URL
+- 3: Button to generate pseudo randomly a new URL
+- 4: Button to send all contacts loaded to the URL
+- 5: Button to send the package name encoded in base64 to the URL
+- 6: List of all notifications catched
+- 7: List of all contacts loaded
 
 # Architectural Overview
 
