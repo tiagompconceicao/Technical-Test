@@ -35,7 +35,7 @@ This application follow a MVVM design pattern (Model-View-ViewModel), and has th
 - Cryptography
 
 ### Activity
-Was implemented only 1 activity in this application, which was presented and described in the [Functionalities Overview](#funcionalities-overview) section.
+Was implemented only 1 activity in this application, which graphical features was presented and described in the [Functionalities Overview](#funcionalities-overview) section.
 
 ### ViewModel
 Class to store the contacts and notification (using LiveData fields), also perform the business logic, as call the Repository methods to send these fields remotely, or instanciate a new URL. 
