@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import tiago.cognizant.technicaltest.R
 import tiago.cognizant.technicaltest.model.Contact
 
+/**
+ * Adapter Class to build and instantiate the View object of the contact list for the recycler view
+ */
 class ContactListAdapter(contactsList: List<Contact>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val contactsList = contactsList
 

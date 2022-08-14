@@ -10,6 +10,10 @@ import tiago.cognizant.technicaltest.R
 import tiago.cognizant.technicaltest.databinding.ActivityMainBinding
 import java.text.SimpleDateFormat
 
+
+/**
+ * Adapter Class to build and instantiate the View object of the notification list for the recycler view
+ */
 class NotificationListAdapter(notificationList: List<StatusBarNotification>): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val notificationList = notificationList
 

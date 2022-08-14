@@ -30,6 +30,9 @@ class MyViewModel(app: Application) : AndroidViewModel(app) {
         return url.getURL()
     }
 
+    /**
+     * Load all contacts and stored them
+     */
     fun loadContacts(mContext: Context){
         repository.getContacts(mContext, onSuccess = {
             (contacts as MutableLiveData<List<Contact>>).value = it

@@ -26,16 +26,19 @@ class NotificationListener : NotificationListenerService() {
         Log.d("Notifications","Listener connected")
     }
 
+    /**
+     * Callback function that is called when a notification is posted
+     * When this function is called, the notification is sent to the MainActivity by the broadcast channel
+     */
     override fun onNotificationPosted(sbn: StatusBarNotification) {
-        // Implement what you want here
         Log.d("Notifications","Notification received")
+
         val intent = Intent("tiago.cognizant.technicaltest.notificationlistener")
         intent.putExtra("Notification", sbn)
         sendBroadcast(intent)
     }
 
     override fun onNotificationRemoved(sbn: StatusBarNotification) {
-        // Implement what you want here
         Log.d("Notifications","Notification removed")
     }
 }

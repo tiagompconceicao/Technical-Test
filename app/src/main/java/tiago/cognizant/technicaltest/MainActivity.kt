@@ -35,10 +35,20 @@ class MainActivity : AppCompatActivity() {
         val mNotificationRecycler = instantiateRecyclerView(binding.recyclerViewNot)
         loadContacts()
 
+        /**
+         * When a notification arrives, the list is re-instantiate, triggering the observer
+         * When the observer is triggered, the respective view Adapter view is also re-instantiate
+         */
         viewModel.notifications.observe(this){
             val mNotificationAdapter = NotificationListAdapter(it)
             mNotificationRecycler.adapter = mNotificationAdapter
         }
+
+        /**
+         * When the contacts are loaded, the list is instantiated, triggering the observer
+         * When the observer is triggered, the respective view Adapter view is also instantiated
+         * This observer is only triggered once in this application
+         */
         viewModel.contacts.observe(this) {
             val mContactAdapter = ContactListAdapter(it)
             mContactRecycler.adapter = mContactAdapter
@@ -63,7 +73,7 @@ class MainActivity : AppCompatActivity() {
             viewModel.sendNotifications(this,binding.url.text.toString())
         }
 
-        // Finally we register a receiver to tell the MainActivity when a notification has been received
+        // Register a receiver to tell the MainActivity when a notification has been received
         broadcastReceiver = BroadcastNotificationReceiver(viewModel)
         val intentFilter = IntentFilter()
         intentFilter.addAction("tiago.cognizant.technicaltest.notificationlistener")

@@ -15,7 +15,9 @@ import tiago.cognizant.technicaltest.model.Contact
 class Repository {
 
 
-
+    /**
+     * Method to query all the contacts from the device
+     */
     fun getContacts(mContext: Context,onSuccess: (ArrayList<Contact>) -> Unit, onError: (Exception) -> Unit) {
         val contactList = ArrayList<Contact>()
 
@@ -32,6 +34,7 @@ class Repository {
         val name: Int = managedCursor
             .getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
 
+        //Creating a list with a proper model format
         while (managedCursor.moveToNext()) {
             val mContact = Contact(managedCursor.getString(name),managedCursor.getString(number))
             contactList.add(mContact)
@@ -40,8 +43,10 @@ class Repository {
         onSuccess(contactList)
     }
 
-    //Send a HTTP POST request to a given url
-    //As this URL is fictitious, all responses must be a VolleyError (bad URL)
+    /**
+     * Send a HTTP POST request to a given url
+     * As the URL usually is fictitious, responses must be a VolleyError (bad URL)
+     */
     fun sendRequest(mContext: Context,url:String, content: Any, contentTitle: String){
         val queue = Volley.newRequestQueue(mContext)
         val body = Gson().toJson(content)
@@ -53,13 +58,13 @@ class Repository {
                 Log.d("Contacts", response)
             },
             Response.ErrorListener {
-                // method to handle errors.
+                // Method to handle errors.
                 Toast.makeText(mContext,"Contacts not sent ${it.message}",Toast.LENGTH_SHORT).show()
                 Log.d("Contacts","That didn't work!")
             }) {
             override fun getParams(): Map<String, String> {
-                // below line we are creating a map for
-                // storing our values in key and value pair.
+
+                // Creating a map for storing the values in key and value pair.
                 val params: MutableMap<String, String> = HashMap()
                 params[contentTitle] = body
 
