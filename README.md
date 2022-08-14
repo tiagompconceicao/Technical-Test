@@ -26,7 +26,7 @@ The image below shows the graphical functionalities of the application, followed
 
 # Architectural Overview
 
-This application follow a MVVM design pattern (Model-View-ViewModel), and has the next architecture:
+This application was developed using Kotlin and follows a MVVM design pattern (Model-View-ViewModel), and has the next architecture:
 
 - Activity
 - ViewModel
