@@ -12,7 +12,7 @@
 Explicar como a aplicação esta organizada visualmente,
 Explicar cada componente visual
 
-<img src="https://github.com/tiagompconceicao/Technical-Test/blob/main/FuncionalityOverview.jpg?raw=true" width="200" height="100">
+<img src="https://github.com/tiagompconceicao/Technical-Test/blob/main/FuncionalityOverview.jpg?raw=true" width="400" height="200">
 ![alt text]()
 - 1: EditText that contains the ficticious URL
 
