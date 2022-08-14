@@ -12,6 +12,8 @@
 Explicar como a aplicação esta organizada visualmente,
 Explicar cada componente visual
 
+![](https://drive.google.com/file/d/1AblIKlvX5RaZGxKfnAoUFiproJg1LuCK/view?usp=sharing)
+- 1: EditText that contains the ficticious URL
 
 # Architectural Overview
 
