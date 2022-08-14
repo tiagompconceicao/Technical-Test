@@ -1,4 +1,3 @@
-
 # Overview
 **Main objective**:  Using the language of your choice, either Java or Kotlin, develop an android application that queries the device contacts provider, saves them into a list and uploads the list to a fictitious URL of your choice. ✔️ 
 
@@ -36,19 +35,17 @@ This application follow a MVVM design pattern (Model-View-ViewModel), and has th
 - Cryptography
 
 ### Activity
-Was implemented only 1 activity in this application, which was presented in the [Functionalities Overview](#foverview) section
-
-
+Was implemented only 1 activity in this application, which was presented and described in the [Functionalities Overview](#foverview) section.
 
 ### ViewModel
-Was implemented 1 ViewModel class to stored the contacts and notification (using LiveData fields), also perform the business logic, as call the Repository methods to send these fields remotely. 
+Class to store the contacts and notification (using LiveData fields), also perform the business logic, as call the Repository methods to send these fields remotely, or instanciate a new URL. 
 
 ### NotificationListener
 Class to instanciate a service to listen notifications.
 When a notification is catched, it is sent to the MainActivity by a broadcast receiver, then is stored in the respective field of the viewModel instance.
 
 ### View
-Package that have 2 classes, 
+Contains the classes used to instantiate the view objects of the contacts and notifications lists.
 
 ### Model
 Contains the necessary data classes.
@@ -58,4 +55,3 @@ Class that performs external contact aside the application, as load the contacts
 
 ### Cryptography
 Contains the functions to encrypt and decrypt using the AES algorithm.
-
