@@ -5,7 +5,7 @@
 **Optional add-on #1**: Upload the content of all notifications received to the same fictitious URL of your choice. ✔️
 
 **Optional add-on #2**: Using an encryption method of your choice, encrypt all the strings used in the application. The methods for encryption and decryption should be available in the code. ❌ 
-***(Encryption/Decryption functions was implemented but weren't used)***
+***(Encryption/Decryption functions were implemented but weren't used)***
 
 **Optional add-on #3**: Implement your own custom method using reflection which encodes the application package name with base64. Upload the encoded string to the same fictitious URL of your choice. ✔️
 
